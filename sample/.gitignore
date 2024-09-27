@@ -1,0 +1,5 @@
+**__pycache__**
+*.txt
+data.json
+*.py
+test.json
