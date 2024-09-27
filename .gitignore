@@ -1,0 +1,9 @@
+.venv/*
+**__pycache__**
+**.DS_Store
+test.unity3d
+main__.py
+
+# ToaruIF Tests log
+lib/toaruIF/*.txt 
+lib/toaruIF/data.json
