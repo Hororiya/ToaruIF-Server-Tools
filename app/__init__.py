@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_talisman import Talisman
 from .mongo import init_mongo
-from .routes import main_blueprint
+from .routes import register_blueprints
 from .config import Config
 
 def create_app():
@@ -13,8 +13,8 @@ def create_app():
     
     # Initialize MongoDB
     init_mongo(app)
-
+    
     # Register Blueprints
-    app.register_blueprint(main_blueprint)
+    register_blueprints(app)
 
     return app
