@@ -181,15 +181,28 @@ def GetOnceDiffResultAll2():
 # TODO proper implementation
 @main_blueprint.route("/api/GetUser", methods=["POST"])
 def GetUser():
-    data = json.load(open("./sample/sampleResponseUser.json", "r"))
-    return prepareResponse(data, 200)
+    token = request.cookies.get("sk")
+    if not token:
+        return prepareResponse({}, 401)
+    data = getAuthData(sessionKey=token)
+    userId = data["userId"]
+    return prepareResponse(
+        [getMainResponseData(0), {}, {"user": [{"modify": getUserData(userId)}]}], 200
+    )
 
 
 # TODO proper implementation
 @main_blueprint.route("/api/PurchaseCheck", methods=["POST"])
 def PurchaseCheck():
-    data = json.load(open("./sample/sampleResponsePurchaseCheck.json", "r"))
-    return prepareResponse(data, 200)
+    # data = json.load(open("./sample/sampleResponsePurchaseCheck.json", "r"))
+
+    _res = {
+        "monthry_purchase": {"now_currency": 0, "max_currency": 0},
+        "limit_currency": 200000,
+        "birth_year_month": "1900-01",
+    }
+
+    return prepareResponse([getMainResponseData(0), _res, {}], 200)
 
 
 @main_blueprint.route("/api/GetHome2", methods=["POST"])

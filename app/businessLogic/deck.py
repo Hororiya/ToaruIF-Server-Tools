@@ -14,7 +14,7 @@ def getDeckTrinityType(userId: int) -> list:
 
 def getDeckType(userId: int) -> list:
     return [
-        {"deck_type": 1, "select_deckid": 4},
+        {"deck_type": 1, "select_deckid": 1},
         {"deck_type": 2, "select_deckid": 1},
         {"deck_type": 3, "select_deckid": 2},
         {"deck_type": 4, "select_deckid": 1},
@@ -26,7 +26,6 @@ def getDeckType(userId: int) -> list:
 
 
 def getDeckInfo(userId: int) -> list:
-    # TODO logic
     out = []
     data = mongo.db[COLLECTION_NAME_DECKS].find({"user_owner_id": userId})
     
@@ -35,7 +34,6 @@ def getDeckInfo(userId: int) -> list:
         out.append(deck)
     
     return out
-    
 
 
 def getDeckTrinityInfo(userId: int) -> list:
