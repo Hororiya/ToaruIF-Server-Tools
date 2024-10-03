@@ -10,7 +10,7 @@ main_blueprint = Blueprint("main", __name__)
 def home():
     return jsonify({
         "message": "Welcome to the Toaru API!",
-        "availableEndpoints": main_blueprint.__dict__
+        # "availableEndpoints": main_blueprint.__dict__
         })
 
 def register_blueprints(app):

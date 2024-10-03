@@ -1,9 +1,9 @@
 import json
-from ..mongo import mongo
+from ..mongo import mongo, get_next_sequence_value
 
 class AuthData:
     _id: str
-    userId: int = 0
+    userId: int
     uuid: str
     nativeToken: str
     nativeSessionId: str
@@ -13,16 +13,25 @@ class AuthData:
     authCode: str = None
 
 def saveAuthData(data: AuthData):
-    _data = getAuthData(uuid=data.uuid)
-    data = data.__dict__
+    try:
+        _data = getAuthData(uuid=data["uuid"])
+    except TypeError:
+        _data = getAuthData(uuid=data.uuid)
+    try:
+        data = data.__dict__
+    except AttributeError:
+        pass
+    except TypeError:
+        pass
     
-    print(_data)
+    # print(_data)
     if _data:
         mongo.db.auth_data.replace_one(
             {"uuid": data['uuid']},
             data,
         )
     else:
+        data["userId"] = get_next_sequence_value("USER_ID")
         mongo.db.auth_data.insert_one(
             data
         )

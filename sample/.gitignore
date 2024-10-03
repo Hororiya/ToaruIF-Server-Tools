@@ -3,3 +3,5 @@
 data.json
 *.py
 test.json
+**.bin
+responses/*.json

@@ -1,5 +1,6 @@
-COLLECTION_NAME_USER_STATUS = "UserStatus"
-
+from ..mongo import mongo
+from ..util.add import COLLECTION_NAME_USER, COLLECTION_NAME_USER_LOGIN_DATA, addAssistCard, addBattleCard, addUser, COLLECTION_NAME_USER_STATUS, addUserTitle, addUserMoney
+from .deck import generateDeckData
 
 def getUserStatusData(userId: int) -> list:
     # TODO proper logic
@@ -59,16 +60,21 @@ def getUserStamps(userId: int) -> list:
 
 
 def getUserTutorial(userId: int) -> list:
-    # TODO proper logic
+    data = mongo.db[COLLECTION_NAME_USER_LOGIN_DATA].find_one({"userId": userId})
     return [
         {
-            "complete_flag": 16126,
-            "play_tutorial_type": 0,
-            "play_tutorial_idx": 0,
-            "prologue_finish_time": "2019-07-09 23:11:45",
+            "complete_flag": data["tutorialStatus"],
+            "play_tutorial_type": data["tutorialType"],
+            "play_tutorial_idx": data["tutorialIndex"],
+            "prologue_finish_time": data["tutorialClearDate"],
         }
     ]
 
+def saveUserTutorialStatus(userId: int, tutorialType: int, tutorialIdx: int):
+    mongo.db[COLLECTION_NAME_USER_LOGIN_DATA].update_one({"userId": userId}, {"$set": {"tutorialType": tutorialType, "tutorialIndex": tutorialIdx}})
+
+def clearUserTutorialStatus(userId: int):
+    mongo.db[COLLECTION_NAME_USER_LOGIN_DATA].update_one({"userId": userId}, {"$set": {"tutorialStatus": 1, "tutorialType": 0, "tutorialIndex": 0, "tutorialClearDate": "2024-01-01 00:00:00"}})
 
 def getUserMoney(userId: int) -> list:
     # TODO proper logic
@@ -218,20 +224,38 @@ def getUserCostume(userId: int) -> list:
 
 
 def getUserData(userId: int) -> list:
+    data = mongo.db[COLLECTION_NAME_USER].find_one({"userid": userId})
+    del data["_id"]
     return [
-        {
-            "userid": 1587615,
-            "name": "Ray",
-            "comment": "Twitter: @RayFirefist",
-            "profile_cardid": 206933001,
-            "last_system_presentid": 403,
-            "paypoint_appstore": 0,
-            "paypoint_appstore_free": 0,
-            "paypoint_googleplay": 0,
-            "paypoint_googleplay_free": 0,
-            "paypoint_free": 0,
-            "paypoint_is_err_bridge": 0,
-            "paypoint_bridge_ref": 0,
-            "paypoint_bridge_free_ref": 999999,
-        }
+        data
     ]
+
+def changeName(userId: int, name: str) -> object:
+    mongo.db[COLLECTION_NAME_USER].update_one({"userid": userId}, {"$set": {"name": name}})
+    data = mongo.db[COLLECTION_NAME_USER].find_one({"userid": userId})
+    del data["_id"]
+    return [data]
+
+def createUser(userId: int) -> bool:
+    # Add User on mongodb
+    addUser(userId)
+    
+    # Add battle cards
+    data = addBattleCard(userId, 100111001)
+    addBattleCard(userId, 100412001)
+    
+    # Add assist cards
+    addAssistCard(userId, 200212001)
+    
+    # Add decorations
+    
+    # Add decks
+    generateDeckData(userId, data["battle_card_uniqid"])
+    
+    # Add user titles
+    addUserTitle(userId, 70031001)
+    
+    # Add user money
+    addUserMoney(userId, type=1, param=0, num=250)
+    
+    return True

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from ..config import Config
 from ..util.generate import generateBytes
-from ..util.authData import getAuthData
+from ..util.authData import getAuthData, saveAuthData
 
 main_blueprint = Blueprint("login", __name__)
 
@@ -65,6 +65,8 @@ def login():
     _data["nativeSessionId"] = nativeSessionId
     _data["authCode"] = auth_code
     _data["sessionKey"] = sessionKey
+    
+    saveAuthData(_data)
 
     return jsonify(
         {

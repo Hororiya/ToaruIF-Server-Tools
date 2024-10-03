@@ -5,16 +5,17 @@ class Config:
 
     # ToaruIF Client Data
     RES_VER = 145545
+    TAG_SCHEDULE = 14250
     APP_VER = "6.3.0"
-    CDN_ENABLE = 1
+    CDN_ENABLE = 0
     SPECIALBG_ENABLE = 0
     TITLEID = 0
     TITLE_BACKGROUND_ENABLE = 1
     SMARTBEAT_ENABLE = 0
-    LOGIN_URL = "https://192.168.1.179:40443/Auth/"
+    LOGIN_URL = "https://login.index-if.jp/Auth/"
     RES_URL = "http://cache.index-if.jp/ver2/"  # "https://192.168.1.179:40443/ver2/"
-    WEB_URL = "https://192.168.1.179:40443/web/"
-    API_URL = "https://192.168.1.179:40443/api/"
+    WEB_URL = "https://192.168.1.217:40443/web/"
+    API_URL = "https://login.index-if.jp/api/"
 
     # ToaruIF Server Config
     IS_CRYPT = 0  # 0 is sending pure JSON and client will send pure json, 1 is sending/receiving encrypted data

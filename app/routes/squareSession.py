@@ -18,7 +18,7 @@ def session():
 
     data = mongo.db.auth_data.find_one({"uuid": uuid})
 
-    print(data)
+    # print(data)
 
     authData = AuthData()
     authData.uuid = uuid
@@ -26,6 +26,7 @@ def session():
     authData.nativeSessionId = nativeSessionId
     authData.sessionKey = None
     authData.sharedSecurityKey = sharedSecurityKey
+    authData.userId = 0 if data is None else data["userId"]
     authData._id = uuid
 
     saveAuthData(authData)
