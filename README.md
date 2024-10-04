@@ -8,10 +8,11 @@
 * `https://psg.sqex-bridge.jp` (cannot be edited, must be mapped via DNS at least)
     * `/native/session`: Second step, registers the session and provides the api crypto key
 * `https://social.index-if.jp/` (can be edited)
-    * `/socialsv/*`: Game data. Every steps are from here.
+    * `/socialsv/*`: Game data. Every steps are from here. (they are converted into `/api/*`)
 * `http://cache.index-if.jp/` (can be edited)
     * `ver2/`: New crypto, resources
-    * `ver1/`: Old crypto, resources
+    * `ver1/`: Old resources endpoint, resources
+    * `ver0/`: Old crypto, resources
 
 ## Credits
 
