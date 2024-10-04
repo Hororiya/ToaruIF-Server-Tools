@@ -30,6 +30,7 @@ def getDeckInfo(userId: int) -> list:
     data = mongo.db[COLLECTION_NAME_DECKS].find({"user_owner_id": userId})
     
     for deck in data:
+        del deck["_id"]
         del deck["user_owner_id"]
         out.append(deck)
     

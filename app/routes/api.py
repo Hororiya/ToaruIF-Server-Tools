@@ -4,7 +4,7 @@ from flask import Blueprint, request
 from ..mongo import mongo
 from ..util.authData import getAuthData
 from ..util.add import COLLECTION_NAME_USER_LOGIN_DATA, addUserLoginData, addUser
-from ..util.prepareResponse import prepareResponse
+from ..util.prepareResponse import prepareResponse, getRequestData
 from ..businessLogic.card import getBattleCardsData, getAssistCardsData
 from ..businessLogic.user import (
     getUserCostume,
@@ -178,16 +178,12 @@ def GetOnceDiffResultAll2():
     return prepareResponse(data, 200)
 
 
-# TODO proper implementation
 @main_blueprint.route("/api/GetUser", methods=["POST"])
 def GetUser():
-    token = request.cookies.get("sk")
-    if not token:
-        return prepareResponse({}, 401)
-    data = getAuthData(sessionKey=token)
-    userId = data["userId"]
+    data, userId = getRequestData()
     return prepareResponse(
-        [getMainResponseData(0), {}, {"user": [{"modify": getUserData(userId)}]}], 200
+        [getMainResponseData(userId), {}, {"user": [{"modify": getUserData(userId)}]}],
+        200,
     )
 
 
@@ -195,20 +191,19 @@ def GetUser():
 @main_blueprint.route("/api/PurchaseCheck", methods=["POST"])
 def PurchaseCheck():
     # data = json.load(open("./sample/sampleResponsePurchaseCheck.json", "r"))
-
+    _, userId = getRequestData()
     _res = {
         "monthry_purchase": {"now_currency": 0, "max_currency": 0},
         "limit_currency": 200000,
         "birth_year_month": "1900-01",
     }
-
-    return prepareResponse([getMainResponseData(0), _res, {}], 200)
+    return prepareResponse([getMainResponseData(userId), _res, {}], 200)
 
 
 @main_blueprint.route("/api/GetHome2", methods=["POST"])
 def GetHome2():
     # data = json.load(open("./sample/sampleResponseHome2.json", "r"))
-
+    _, userId = getRequestData()
     _res = {
         "login_bonuses": [],
         "banners": [],
@@ -218,9 +213,8 @@ def GetHome2():
         "is_invite_user": 0,
         "is_invited_user": 1,
     }
-
     return prepareResponse(
-        [getMainResponseData(0), _res, {}],
+        [getMainResponseData(userId), _res, {}],
         200,
     )
 
@@ -228,7 +222,7 @@ def GetHome2():
 @main_blueprint.route("/api/GetHome2_2", methods=["POST"])
 def GetHome2_2():
     # data = json.load(open("./sample/sampleResponseHome2_2.json", "r"))
-
+    _, userId = getRequestData()
     _res = {
         "login_bonuses": [],
         "banners": [
@@ -260,25 +254,25 @@ def GetHome2_2():
         "is_invite_user": 0,
         "is_invited_user": 1,
     }
-    return prepareResponse([getMainResponseData(0), _res, {}], 200)
+    return prepareResponse([getMainResponseData(userId), _res, {}], 200)
 
 
 @main_blueprint.route("/api/StartStory", methods=["POST"])
 def StartStory():
     # ID: 927040001
     data = json.load(open("./sample/sampleResponseStartStory.json", "r"))
-    return prepareResponse(data, 200)
-
-
-@main_blueprint.route("/web/")
-def WebRoot():
-    return "HTML missing lmao."
+    _, userId = getRequestData()
+    return prepareResponse(
+        [getMainResponseData(userId), {}, {"server_const": Config.GAME_CONSTS}], 200
+    )
 
 
 @main_blueprint.route("/api/GetGachaList", methods=["POST"])
 def GachaList():
     # ID: 927040001
+    _, userId = getRequestData()
     data = json.load(open("./sample/sampleResponseGachaList.json", "r"))
+    data = [getMainResponseData(userId), data, {"server_const": Config.GAME_CONSTS}]
     return prepareResponse(data, 200)
 
 
@@ -301,6 +295,8 @@ def CreateUser():
     userId = data["userId"]
 
     _r = createUser(userId)
+    if Config.TUTORIAL_BYPASS:
+        clearUserTutorialStatus(userId)
 
     return prepareResponse([getMainResponseData(0), {}], 200)
 

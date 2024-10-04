@@ -11,6 +11,7 @@ COLLECTION_NAME_USER_TITLES = "UserTitles"
 COLLECTION_NAME_USER_STATUS = "UserStatus"
 COLLECTION_NAME_DECKS = "Decks"
 COLLECTION_NAME_MONEY = "Money"
+COLLECTION_NAME_MENU_DECORATION_INFOS = "MenuDecorations"
 
 
 def addBattleCard(userId: int, battleCardKey: int) -> bool:
@@ -193,7 +194,7 @@ def addUserMoney(userId: int, type: int, num: int, param: int = 0) -> object:
         )
     return new
 
-
+# onInit only
 def addUserStatus(userId: int):
     new = {
         "user_owner_id": userId,
@@ -243,3 +244,16 @@ def addUserStatus(userId: int):
     mongo.db[COLLECTION_NAME_USER_STATUS].insert_one(new)
     
     return new
+
+def setDecorations(userId: int, decorations: list):
+    obj = {
+        "user_owner_id": userId,
+        "decorations": decorations
+    }
+    
+    check = mongo.db[COLLECTION_NAME_MENU_DECORATION_INFOS].find_one({"user_owner_id": userId})
+    
+    if check:
+        mongo.db[COLLECTION_NAME_MENU_DECORATION_INFOS].replace_one({"user_owner_id": userId}, obj)
+    else:
+        mongo.db[COLLECTION_NAME_MENU_DECORATION_INFOS].insert_one(obj)

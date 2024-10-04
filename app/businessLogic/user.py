@@ -1,54 +1,26 @@
 from ..mongo import mongo
-from ..util.add import COLLECTION_NAME_USER, COLLECTION_NAME_USER_LOGIN_DATA, addAssistCard, addBattleCard, addUser, COLLECTION_NAME_USER_STATUS, addUserTitle, addUserMoney
+from ..util.add import (
+    COLLECTION_NAME_USER,
+    COLLECTION_NAME_USER_LOGIN_DATA,
+    addAssistCard,
+    addBattleCard,
+    addUser,
+    COLLECTION_NAME_USER_STATUS,
+    addUserTitle,
+    addUserMoney,
+    addUserStatus,
+    setDecorations
+)
 from .deck import generateDeckData
+from .card import BATTLE_CARD_DATA, ASSIST_CARD_DATA
+from ..config import Config
+
 
 def getUserStatusData(userId: int) -> list:
-    # TODO proper logic
-    return [
-        {
-            "rank": 999,
-            "total_exp": 9999999,
-            "favorite_charaid1": 30,
-            "favorite_cardid1": 0,
-            "favorite_card_effect_on1": 0,
-            "favorite_costumeid1": 30000401,
-            "favorite_costume_anime_on1": 1,
-            "favorite_charaid2": 10,
-            "favorite_cardid2": 201030002,
-            "favorite_card_effect_on2": 0,
-            "favorite_costumeid2": 0,
-            "favorite_costume_anime_on2": 0,
-            "favorite_charaid3": 13,
-            "favorite_cardid3": 701330001,
-            "favorite_card_effect_on3": 0,
-            "favorite_costumeid3": 0,
-            "favorite_costume_anime_on3": 0,
-            "favorite_charaid4": 181,
-            "favorite_cardid4": 618130001,
-            "favorite_card_effect_on4": 0,
-            "favorite_costumeid4": 0,
-            "favorite_costume_anime_on4": 0,
-            "favorite_charaid5": 69,
-            "favorite_cardid5": 206933001,
-            "favorite_card_effect_on5": 0,
-            "favorite_costumeid5": 0,
-            "favorite_costume_anime_on5": 0,
-            "favorite_charaid6": 45,
-            "favorite_cardid6": 0,
-            "favorite_card_effect_on6": 0,
-            "favorite_costumeid6": 45000901,
-            "favorite_costume_anime_on6": 1,
-            "meet_favorite_chara_idx": 4,
-            "chara_meet_time": 0,
-            "quest_complete_num": 379,
-            "battle_card_num": 98,
-            "assist_card_num": 96,
-            "quest_badge_state": 0,
-            "select_user_titleid": 30691000,
-            "select_user_title_param": 0,
-            "total_chara_power": 450399,
-        }
-    ]
+    data = mongo.db[COLLECTION_NAME_USER_STATUS].find_one({"user_owner_id": userId})
+    del data["_id"]
+    del data["user_owner_id"]
+    return [data]
 
 
 def getUserStamps(userId: int) -> list:
@@ -70,11 +42,27 @@ def getUserTutorial(userId: int) -> list:
         }
     ]
 
+
 def saveUserTutorialStatus(userId: int, tutorialType: int, tutorialIdx: int):
-    mongo.db[COLLECTION_NAME_USER_LOGIN_DATA].update_one({"userId": userId}, {"$set": {"tutorialType": tutorialType, "tutorialIndex": tutorialIdx}})
+    mongo.db[COLLECTION_NAME_USER_LOGIN_DATA].update_one(
+        {"userId": userId},
+        {"$set": {"tutorialType": tutorialType, "tutorialIndex": tutorialIdx}},
+    )
+
 
 def clearUserTutorialStatus(userId: int):
-    mongo.db[COLLECTION_NAME_USER_LOGIN_DATA].update_one({"userId": userId}, {"$set": {"tutorialStatus": 1, "tutorialType": 0, "tutorialIndex": 0, "tutorialClearDate": "2024-01-01 00:00:00"}})
+    mongo.db[COLLECTION_NAME_USER_LOGIN_DATA].update_one(
+        {"userId": userId},
+        {
+            "$set": {
+                "tutorialStatus": 1,
+                "tutorialType": 0,
+                "tutorialIndex": 0,
+                "tutorialClearDate": "2024-01-01 00:00:00",
+            }
+        },
+    )
+
 
 def getUserMoney(userId: int) -> list:
     # TODO proper logic
@@ -226,36 +214,55 @@ def getUserCostume(userId: int) -> list:
 def getUserData(userId: int) -> list:
     data = mongo.db[COLLECTION_NAME_USER].find_one({"userid": userId})
     del data["_id"]
-    return [
-        data
-    ]
+    return [data]
+
 
 def changeName(userId: int, name: str) -> object:
-    mongo.db[COLLECTION_NAME_USER].update_one({"userid": userId}, {"$set": {"name": name}})
+    mongo.db[COLLECTION_NAME_USER].update_one(
+        {"userid": userId}, {"$set": {"name": name}}
+    )
     data = mongo.db[COLLECTION_NAME_USER].find_one({"userid": userId})
     del data["_id"]
     return [data]
 
+
 def createUser(userId: int) -> bool:
     # Add User on mongodb
     addUser(userId)
-    
-    # Add battle cards
-    data = addBattleCard(userId, 100111001)
-    addBattleCard(userId, 100412001)
-    
-    # Add assist cards
-    addAssistCard(userId, 200212001)
-    
+    addUserStatus(userId)
+
+    if Config.CREATE_WITH_EVERYTHING: # Cheat creation
+        # Add assist cards
+        for card in ASSIST_CARD_DATA:
+            addAssistCard(userId, card["key"])
+        
+        i = 0
+        # Add battle cards
+        for card in BATTLE_CARD_DATA:
+            if i == 0:
+                data = addBattleCard(userId, card["key"])
+                i+=1
+            else:
+                addBattleCard(userId, card["key"])
+        pass
+    else: # Legit creation
+        # Add battle cards
+        data = addBattleCard(userId, 100111001)
+        addBattleCard(userId, 100412001)
+
+        # Add assist cards
+        addAssistCard(userId, 200212001)
+
     # Add decorations
-    
+    setDecorations(userId, [{"content_type":10,"param":601,"sp_badgeid":300000002},{"content_type":25,"param":2500,"sp_badgeid":2500}])
+
     # Add decks
     generateDeckData(userId, data["battle_card_uniqid"])
-    
+
     # Add user titles
     addUserTitle(userId, 70031001)
-    
+
     # Add user money
     addUserMoney(userId, type=1, param=0, num=250)
-    
+
     return True

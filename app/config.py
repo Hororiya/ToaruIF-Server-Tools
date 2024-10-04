@@ -7,7 +7,7 @@ class Config:
     RES_VER = 145545
     TAG_SCHEDULE = 14250
     APP_VER = "6.3.0"
-    CDN_ENABLE = 0
+    CDN_ENABLE = 1
     SPECIALBG_ENABLE = 0
     TITLEID = 0
     TITLE_BACKGROUND_ENABLE = 1
@@ -18,7 +18,9 @@ class Config:
     API_URL = "https://login.index-if.jp/api/"
 
     # ToaruIF Server Config
-    IS_CRYPT = 0  # 0 is sending pure JSON and client will send pure json, 1 is sending/receiving encrypted data
+    IS_CRYPT = 1  # 0 is sending pure JSON and client will send pure json, 1 is sending/receiving encrypted data
+    TUTORIAL_BYPASS = True # This lets you bypass the tutorial and having everything ready.
+    CREATE_WITH_EVERYTHING = True # This adds you all the cards provided by the game database (BattleCard and AssistCard)
 
     # ToaruIF Server constants
     GAME_CONSTS = {

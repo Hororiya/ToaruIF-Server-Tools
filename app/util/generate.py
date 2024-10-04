@@ -10,4 +10,3 @@ def generateBytes(bytesSize: int = 16):
 
     # Convert to string for easy display (optional)
     return encoded_bytes.decode("utf-8")
-
