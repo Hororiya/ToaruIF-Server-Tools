@@ -1,10 +1,7 @@
 import json
 from ..mongo import mongo
 from ..util.add import COLLECTION_NAME_BATTLE_CARDS, COLLECTION_NAME_ASSIST_CARDS
-
-ASSIST_CARD_DATA = json.load(open("./data/AssistCard.json", "r"))["items"]
-BATTLE_CARD_DATA = json.load(open("./data/BattleCard.json", "r"))["items"]
-
+from ..util.importData import ASSIST_CARD_DATA, BATTLE_CARD_DATA
 
 def getAssistCardsData(userId: int) -> list:
     out = []

@@ -1,0 +1,59 @@
+[
+    {
+        "gacha_base": {
+            "gachaid": 1,
+            "name": "Tutorial Gacha",
+            "priority": 1000,
+            "gacha_type": 1,
+            "gacha_step_view_type": 0,
+            "is_time_limit_view": 0,
+            "title_imageid": 3,
+            "promotionid": 3,
+            "special_type": 0,
+            "movie_name": "gachabg_20001",
+            "notice_movie_name": "",
+            "notice_movie_bgm": 0,
+            "bgm": 0,
+            "result_bgm": 0,
+            "imageid": 0,
+            "is_full_bg": 0,
+            "def_pay_type": 2,
+            "def_pay_typeid": 0,
+            "is_show_web_view": 0,
+            "replace_pay_type": 4,
+            "replace_pay_typeid": 100004003,
+            "replace_pay_typeid2": 100004005,
+            "point_iconid": 0,
+            "point_gachaid": 0,
+            "set_sale_management_type": 0,
+            "play_again_max": 0
+        },
+        "schedule": {
+            "start_time": 0,
+            "end_time": 0,
+            "open_time": 0,
+            "close_time": 0
+        },
+        "play_infos": [
+            {
+                "balloon": 1,
+                "lot_num": 10,
+                "lots_num": [
+                    9,
+                    1
+                ],
+                "out_num_max": 1,
+                "set_stock_max": 0,
+                "set_stock_remain": 0,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 0,
+                "is_pay": 0,
+                "pay_point_num": 0,
+                "money_num": 0,
+                "item_num": -1,
+                "limited_daily_point_num": 0
+            }
+        ]
+    }
+]

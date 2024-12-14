@@ -1,0 +1,471 @@
+[
+    {
+        "gacha_base": {
+            "gachaid": 3,
+            "name": "プレミアムガチャ",
+            "priority": 1000,
+            "gacha_type": 1,
+            "gacha_step_view_type": 0,
+            "is_time_limit_view": 0,
+            "title_imageid": 3,
+            "promotionid": 3,
+            "special_type": 0,
+            "movie_name": "gachabg_20001",
+            "notice_movie_name": "",
+            "notice_movie_bgm": 0,
+            "bgm": 0,
+            "result_bgm": 0,
+            "imageid": 0,
+            "is_full_bg": 0,
+            "def_pay_type": 2,
+            "def_pay_typeid": 0,
+            "is_show_web_view": 0,
+            "replace_pay_type": 4,
+            "replace_pay_typeid": 100004003,
+            "replace_pay_typeid2": 100004005,
+            "point_iconid": 0,
+            "point_gachaid": 0,
+            "set_sale_management_type": 0,
+            "play_again_max": 0
+        },
+        "schedule": {
+            "start_time": 0,
+            "end_time": 0,
+            "open_time": 0,
+            "close_time": 0
+        },
+        "play_infos": [
+            {
+                "balloon": 0,
+                "lot_num": 1,
+                "out_num_max": 1,
+                "set_stock_max": 1,
+                "set_stock_remain": 1,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 1727380800,
+                "is_pay": 1,
+                "pay_point_num": 110,
+                "money_num": 0,
+                "item_num": -1,
+                "limited_daily_point_num": 0
+            },
+            {
+                "balloon": 0,
+                "lot_num": 1,
+                "out_num_max": 10,
+                "set_stock_max": 0,
+                "set_stock_remain": 0,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 0,
+                "is_pay": 0,
+                "pay_point_num": 300,
+                "money_num": 0,
+                "item_num": 1,
+                "limited_daily_point_num": 0
+            },
+            {
+                "balloon": 1,
+                "lot_num": 10,
+                "lots_num": [
+                    9,
+                    1
+                ],
+                "out_num_max": 1,
+                "set_stock_max": 0,
+                "set_stock_remain": 0,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 0,
+                "is_pay": 0,
+                "pay_point_num": 3000,
+                "money_num": 0,
+                "item_num": -1,
+                "limited_daily_point_num": 0
+            }
+        ]
+    },
+    {
+        "gacha_base": {
+            "gachaid": 1,
+            "name": "Test Gacha",
+            "priority": 10000,
+            "gacha_type": 1,
+            "gacha_step_view_type": 0,
+            "is_time_limit_view": 0,
+            "title_imageid": 316,
+            "promotionid": 291,
+            "special_type": 0,
+            "movie_name": "",
+            "notice_movie_name": "",
+            "notice_movie_bgm": 0,
+            "bgm": 0,
+            "result_bgm": 0,
+            "imageid": 291,
+            "is_full_bg": 1,
+            "def_pay_type": 4,
+            "def_pay_typeid": 100004014,
+            "is_show_web_view": 0,
+            "replace_pay_type": 0,
+            "replace_pay_typeid": 0,
+            "replace_pay_typeid2": 0,
+            "point_iconid": 0,
+            "point_gachaid": 0,
+            "set_sale_management_type": 0,
+            "play_again_max": 0
+        },
+        "schedule": {
+            "start_time": 0,
+            "end_time": 0,
+            "open_time": 0,
+            "close_time": 0
+        },
+        "pickups": [
+            {
+                "type": 9,
+                "id": 206630002,
+                "num": 0,
+                "param1": 0,
+                "param2": 0,
+                "param3": 0,
+                "rarity": 0
+            }
+        ],
+        "play_infos": [
+            {
+                "balloon": 9,
+                "lot_num": 2,
+                "out_num_max": 1,
+                "set_stock_max": 0,
+                "set_stock_remain": 0,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 0,
+                "is_pay": 0,
+                "pay_point_num": 0,
+                "money_num": 0,
+                "item_num": 1,
+                "limited_daily_point_num": 0
+            }
+        ]
+    },
+    {
+        "gacha_base": {
+            "gachaid": 509,
+            "name": "期間限定★3確定チケットガチャ2023",
+            "priority": 508,
+            "gacha_type": 1,
+            "gacha_step_view_type": 0,
+            "is_time_limit_view": 0,
+            "title_imageid": 509,
+            "promotionid": 509,
+            "special_type": 0,
+            "movie_name": "gachabg_00468",
+            "notice_movie_name": "",
+            "notice_movie_bgm": 0,
+            "bgm": 0,
+            "result_bgm": 0,
+            "imageid": 0,
+            "is_full_bg": 0,
+            "def_pay_type": 4,
+            "def_pay_typeid": 100004023,
+            "is_show_web_view": 1,
+            "replace_pay_type": 0,
+            "replace_pay_typeid": 0,
+            "replace_pay_typeid2": 0,
+            "point_iconid": 0,
+            "point_gachaid": 0,
+            "set_sale_management_type": 0,
+            "play_again_max": 0
+        },
+        "schedule": {
+            "start_time": 1709708400,
+            "end_time": 0,
+            "open_time": 1727377895,
+            "close_time": 0
+        },
+        "play_infos": [
+            {
+                "balloon": 0,
+                "lot_num": 1,
+                "out_num_max": 1,
+                "set_stock_max": 0,
+                "set_stock_remain": 0,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 0,
+                "is_pay": 0,
+                "pay_point_num": 0,
+                "money_num": 0,
+                "item_num": 1,
+                "limited_daily_point_num": 0
+            }
+        ]
+    },
+    {
+        "gacha_base": {
+            "gachaid": 357,
+            "name": "期間限定★3確定チケットガチャ2022",
+            "priority": 502,
+            "gacha_type": 1,
+            "gacha_step_view_type": 0,
+            "is_time_limit_view": 0,
+            "title_imageid": 357,
+            "promotionid": 357,
+            "special_type": 0,
+            "movie_name": "gachabg_00357",
+            "notice_movie_name": "",
+            "notice_movie_bgm": 0,
+            "bgm": 0,
+            "result_bgm": 0,
+            "imageid": 0,
+            "is_full_bg": 1,
+            "def_pay_type": 4,
+            "def_pay_typeid": 100004016,
+            "is_show_web_view": 0,
+            "replace_pay_type": 0,
+            "replace_pay_typeid": 0,
+            "replace_pay_typeid2": 0,
+            "point_iconid": 0,
+            "point_gachaid": 0,
+            "set_sale_management_type": 0,
+            "play_again_max": 0
+        },
+        "schedule": {
+            "start_time": 1677567600,
+            "end_time": 0,
+            "open_time": 1727377895,
+            "close_time": 0
+        },
+        "play_infos": [
+            {
+                "balloon": 0,
+                "lot_num": 1,
+                "out_num_max": 1,
+                "set_stock_max": 0,
+                "set_stock_remain": 0,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 0,
+                "is_pay": 0,
+                "pay_point_num": 0,
+                "money_num": 0,
+                "item_num": 1,
+                "limited_daily_point_num": 0
+            }
+        ]
+    },
+    {
+        "gacha_base": {
+            "gachaid": 6,
+            "name": "★3確定チケットガチャ",
+            "priority": 200,
+            "gacha_type": 1,
+            "gacha_step_view_type": 0,
+            "is_time_limit_view": 0,
+            "title_imageid": 6,
+            "promotionid": 6,
+            "special_type": 0,
+            "movie_name": "gachabg_00004",
+            "notice_movie_name": "",
+            "notice_movie_bgm": 0,
+            "bgm": 0,
+            "result_bgm": 0,
+            "imageid": 0,
+            "is_full_bg": 0,
+            "def_pay_type": 4,
+            "def_pay_typeid": 100004002,
+            "is_show_web_view": 0,
+            "replace_pay_type": 0,
+            "replace_pay_typeid": 0,
+            "replace_pay_typeid2": 0,
+            "point_iconid": 0,
+            "point_gachaid": 0,
+            "set_sale_management_type": 0,
+            "play_again_max": 0
+        },
+        "schedule": {
+            "start_time": 0,
+            "end_time": 0,
+            "open_time": 0,
+            "close_time": 0
+        },
+        "play_infos": [
+            {
+                "balloon": 2,
+                "lot_num": 1,
+                "out_num_max": 1,
+                "set_stock_max": 0,
+                "set_stock_remain": 0,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 0,
+                "is_pay": 0,
+                "pay_point_num": 0,
+                "money_num": 0,
+                "item_num": 1,
+                "limited_daily_point_num": 0
+            }
+        ]
+    },
+    {
+        "gacha_base": {
+            "gachaid": 23,
+            "name": "★3バトルキャラ確定チケットガチャ",
+            "priority": 100,
+            "gacha_type": 1,
+            "gacha_step_view_type": 0,
+            "is_time_limit_view": 0,
+            "title_imageid": 23,
+            "promotionid": 0,
+            "special_type": 0,
+            "movie_name": "gachabg_00004",
+            "notice_movie_name": "",
+            "notice_movie_bgm": 0,
+            "bgm": 0,
+            "result_bgm": 0,
+            "imageid": 0,
+            "is_full_bg": 0,
+            "def_pay_type": 4,
+            "def_pay_typeid": 100004004,
+            "is_show_web_view": 0,
+            "replace_pay_type": 0,
+            "replace_pay_typeid": 0,
+            "replace_pay_typeid2": 0,
+            "point_iconid": 0,
+            "point_gachaid": 0,
+            "set_sale_management_type": 0,
+            "play_again_max": 0
+        },
+        "schedule": {
+            "start_time": 0,
+            "end_time": 0,
+            "open_time": 0,
+            "close_time": 0
+        },
+        "play_infos": [
+            {
+                "balloon": 7,
+                "lot_num": 1,
+                "out_num_max": 1,
+                "set_stock_max": 0,
+                "set_stock_remain": 0,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 0,
+                "is_pay": 0,
+                "pay_point_num": 0,
+                "money_num": 0,
+                "item_num": 1,
+                "limited_daily_point_num": 0
+            }
+        ]
+    },
+    {
+        "gacha_base": {
+            "gachaid": 131,
+            "name": "★3アシストキャラ確定チケットガチャ",
+            "priority": 99,
+            "gacha_type": 1,
+            "gacha_step_view_type": 0,
+            "is_time_limit_view": 0,
+            "title_imageid": 131,
+            "promotionid": 0,
+            "special_type": 0,
+            "movie_name": "gachabg_00131",
+            "notice_movie_name": "",
+            "notice_movie_bgm": 0,
+            "bgm": 0,
+            "result_bgm": 0,
+            "imageid": 0,
+            "is_full_bg": 0,
+            "def_pay_type": 4,
+            "def_pay_typeid": 100004009,
+            "is_show_web_view": 0,
+            "replace_pay_type": 0,
+            "replace_pay_typeid": 0,
+            "replace_pay_typeid2": 0,
+            "point_iconid": 0,
+            "point_gachaid": 0,
+            "set_sale_management_type": 0,
+            "play_again_max": 0
+        },
+        "schedule": {
+            "start_time": 0,
+            "end_time": 0,
+            "open_time": 0,
+            "close_time": 0
+        },
+        "play_infos": [
+            {
+                "balloon": 8,
+                "lot_num": 1,
+                "out_num_max": 1,
+                "set_stock_max": 0,
+                "set_stock_remain": 0,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 0,
+                "is_pay": 0,
+                "pay_point_num": 0,
+                "money_num": 0,
+                "item_num": 1,
+                "limited_daily_point_num": 0
+            }
+        ]
+    },
+    {
+        "gacha_base": {
+            "gachaid": 2,
+            "name": "ノーマルガチャ",
+            "priority": 1,
+            "gacha_type": 5,
+            "gacha_step_view_type": 0,
+            "is_time_limit_view": 0,
+            "title_imageid": 2,
+            "promotionid": 2,
+            "special_type": 0,
+            "movie_name": "",
+            "notice_movie_name": "",
+            "notice_movie_bgm": 0,
+            "bgm": 0,
+            "result_bgm": 0,
+            "imageid": 2,
+            "is_full_bg": 0,
+            "def_pay_type": 1,
+            "def_pay_typeid": 0,
+            "is_show_web_view": 0,
+            "replace_pay_type": 0,
+            "replace_pay_typeid": 0,
+            "replace_pay_typeid2": 0,
+            "point_iconid": 0,
+            "point_gachaid": 0,
+            "set_sale_management_type": 0,
+            "play_again_max": 0
+        },
+        "schedule": {
+            "start_time": 0,
+            "end_time": 0,
+            "open_time": 0,
+            "close_time": 0
+        },
+        "play_infos": [
+            {
+                "balloon": 0,
+                "lot_num": 10,
+                "out_num_max": 1,
+                "set_stock_max": 1,
+                "set_stock_remain": 1,
+                "step_max": 1,
+                "step_now": 1,
+                "next_reset_time": 1727380800,
+                "is_pay": 0,
+                "pay_point_num": 0,
+                "money_num": 0,
+                "item_num": 0,
+                "limited_daily_point_num": 0
+            }
+        ]
+    }
+]

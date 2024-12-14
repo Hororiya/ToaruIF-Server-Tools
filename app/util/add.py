@@ -12,6 +12,8 @@ COLLECTION_NAME_USER_STATUS = "UserStatus"
 COLLECTION_NAME_DECKS = "Decks"
 COLLECTION_NAME_MONEY = "Money"
 COLLECTION_NAME_MENU_DECORATION_INFOS = "MenuDecorations"
+COLLECTION_NAME_GACHA_STATUS = "GachaStatus"
+COLLECTION_NAME_TUTORIALS = "Tutorials"
 
 
 def addBattleCard(userId: int, battleCardKey: int) -> bool:

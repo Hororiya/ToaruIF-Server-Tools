@@ -1,3 +1,6 @@
+# 0 : None
+# 1 : Play
+# 2 : WaitBattleEnd
 def getBattlePlayState(userId: int) -> list:
     # TODO pause play state
     return [{"play_state": 0}]
