@@ -2,7 +2,8 @@ import requests
 from lib.commands.decrypt import decrypt
 
 URL = "https://login.index-if.jp//Auth/gatein.php"
-BODY = '{"market":1,"cl_ver":"6.3.0"}'
+# BODY = '{"market":1,"cl_ver":"6.3.0"}'
+BODY = '{"market":2,"cl_ver":"7.0.1"}'
 
 def download():
     data = requests.post(URL, headers={
@@ -17,7 +18,7 @@ def download():
         res_url = resp['resource_url']
         patch_ver = resp['patch_version']
 
-        data = requests.get(f'{res_url}ios/{patch_ver}')
+        data = requests.get(f'{res_url}and/{patch_ver}')
 
         blob = data.content
         decrypt(blob, "test.unity3d", "./bin/keys-2.bin")
